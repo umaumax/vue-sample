@@ -1,5 +1,6 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import DynamicFilterTable from './components/DynamicFilterTable.vue';
 </script>
 
 <template>
@@ -12,6 +13,9 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+  <div>
+    <DynamicFilterTable></DynamicFilterTable>
+  </div>
 </template>
 
 <style scoped>
