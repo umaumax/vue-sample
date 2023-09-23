@@ -1,6 +1,8 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import Snackbar from './components/Snackbar.vue'
 import DynamicFilterTable from './components/DynamicFilterTable.vue';
+import { showSnackbar } from "@/snackbar"
 </script>
 
 <template>
@@ -13,6 +15,8 @@ import DynamicFilterTable from './components/DynamicFilterTable.vue';
     </a>
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
+    <button type="button" @click="showSnackbar('hello');">Toast</button>
+    <Snackbar />
   <div>
     <DynamicFilterTable></DynamicFilterTable>
   </div>
