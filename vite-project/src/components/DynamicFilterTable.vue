@@ -3,7 +3,10 @@
     <label>SearchBy:</label><input v-model="searchTerm" />
   </div>
   <table-lite
+    :title="'Sample Table'"
     :is-static-mode="true"
+    :is-fixed-first-column="true"
+    :is-vertical-highlight="true"
     :columns="table.columns"
     :rows="table.rows"
     :total="table.totalRecordCount"
@@ -14,51 +17,27 @@
 <script>
 import { defineComponent, reactive, ref, computed } from "vue";
 import TableLite from 'vue3-table-lite'
+import { state } from "@/web-socket-app";
 
 export default defineComponent({
   name: "App",
   components: { TableLite },
   setup() {
-    const searchTerm = ref(""); // Search text
+    const searchTerm = ref("");
 
-    // Fake data
-    const data = reactive([]);
-    for (let i = 0; i < 126; i++) {
-      data.push({
-        id: i,
-        name: "TEST" + i,
-        email: "test" + i + "@example.com",
-      });
-    }
+    const data = state.data
 
-    // Table config
     const table = reactive({
-      columns: [
-        {
-          label: "ID",
-          field: "id",
-          width: "3%",
-          sortable: true,
-          isKey: true,
-        },
-        {
-          label: "Name",
-          field: "name",
-          width: "10%",
-          sortable: true,
-        },
-        {
-          label: "Email",
-          field: "email",
-          width: "15%",
-          sortable: true,
-        },
-      ],
+      columns: state.columns,
       rows: computed(() => {
+        const keyword = searchTerm.value.toLowerCase();
         return data.filter(
-          (x) =>
-            x.email.toLowerCase().includes(searchTerm.value.toLowerCase()) ||
-            x.name.toLowerCase().includes(searchTerm.value.toLowerCase())
+          (x) => {
+            for (const [key, value] of Object.entries(x)) {
+              if (String(value).toLowerCase().includes(keyword)) { return true; }
+            }
+            return false
+          }
         );
       }),
       totalRecordCount: computed(() => {
