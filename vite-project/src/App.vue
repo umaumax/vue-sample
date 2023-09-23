@@ -12,7 +12,7 @@ import DynamicFilterTable from './components/DynamicFilterTable.vue';
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
+  <!-- <HelloWorld msg="Vite + Vue" /> -->
   <div>
     <DynamicFilterTable></DynamicFilterTable>
   </div>
