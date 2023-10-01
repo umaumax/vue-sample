@@ -1,8 +1,14 @@
 <script setup>
+import { reactive } from 'vue'
+
 import HelloWorld from './components/HelloWorld.vue'
 import Snackbar from './components/Snackbar.vue'
 import DynamicFilterTable from './components/DynamicFilterTable.vue';
 import { showSnackbar } from "@/snackbar"
+
+import PrismEditor from './components/PrismEditor.vue'
+var sample_code = 'console.log("Hello World");\nconsole.log("Hello Vue.js");'
+const code = reactive(sample_code);
 </script>
 
 <template>
@@ -15,6 +21,7 @@ import { showSnackbar } from "@/snackbar"
     </a>
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
+    <PrismEditor :code="code" />
     <button type="button" @click="showSnackbar('hello');">Toast</button>
     <Snackbar />
   <div>

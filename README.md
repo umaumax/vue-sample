@@ -18,3 +18,13 @@ Done. Now run:
   npm install
   npm run dev
 ```
+
+## how to setup vue-prism-editor
+* [koca/vue-prism-editor: A dead simple code editor with syntax highlighting and line numbers. 3kb/gz]( https://github.com/koca/vue-prism-editor )
+  * for Vue3: [koca/vue-prism-editor at feature/next]( https://github.com/koca/vue-prism-editor/tree/feature/next )
+  * NOTE: [Plugins from https://prismjs.com/index.html#plugins? · Issue #145 · koca/vue-prism-editor]( https://github.com/koca/vue-prism-editor/issues/145 )
+
+``` bash
+npm install prismjs
+npm install vue-prism-editor@alpha
+```
